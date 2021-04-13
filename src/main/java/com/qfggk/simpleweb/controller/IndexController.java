@@ -42,7 +42,7 @@ public class IndexController {
         if(username!=null)
             return "main";
         else
-            //model.addAttribute("msg","未登录");
+            //model.addAttribute("msg","未1登录");
             return "redirect:/login";
     }
 }
