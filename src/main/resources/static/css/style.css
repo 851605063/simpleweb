@@ -191,7 +191,7 @@ hr {
 .sticky-left-side {
     position: fixed;
     height: 100%;
-    overflow-y: auto;
+    overflow-y: hidden;
     z-index: 100;
 }
 

@@ -25,6 +25,7 @@ public class IndexController {
 
         if(name.equals("wjq")&&passwd.equals("123")) {
             model.addAttribute("msg","登录成功！");
+            System.out.println("name:"+name+"登录成功");
             session.setAttribute("username",name);
             return "redirect:/main.html";
         }
@@ -44,5 +45,15 @@ public class IndexController {
         else
             //model.addAttribute("msg","未1登录");
             return "redirect:/login";
+    }
+
+
+    @GetMapping("/logout")
+    public String logOut(HttpSession session)
+    {
+      Object usernme=session.getAttribute("username");
+      if(usernme!=null)
+          session.removeAttribute("username");
+      return "login";
     }
 }
