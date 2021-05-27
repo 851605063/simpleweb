@@ -2,11 +2,12 @@ package com.qfggk.simpleweb.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TableController {
     @GetMapping("/basic_table")
-    public String basic_table()
+    public String basic_table(@RequestParam("a") int a)
     {
         return "table/basic_table";
     }

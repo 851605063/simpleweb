@@ -11,6 +11,7 @@ import java.io.IOException;
 @Controller
 @Slf4j
 public class FormTestController {
+
     @GetMapping("/form_layouts")
     public String form_layouts()
     {
@@ -28,8 +29,8 @@ public class FormTestController {
         {
 
             String originalFilename = hp.getOriginalFilename();
-            log.info("头像名为："+originalFilename);
-            hp.transferTo(new File("D:\\"+originalFilename));
+            log.info("头像名为："+ originalFilename);
+            hp.transferTo(new File("D:\\"+ originalFilename));
 
         }
         return "main";
