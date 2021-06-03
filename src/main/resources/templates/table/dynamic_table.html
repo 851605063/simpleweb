@@ -78,6 +78,7 @@
                                         <th>name</th>
                                         <th>age</th>
                                         <th class="hidden-phone">email</th>
+                                        <th>操作</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -87,6 +88,7 @@
                                         <td th:text="${user.name }"></td>
                                         <td th:text="${user.age}"></td>
                                         <td th:text="${user.email}"></td>
+                                        <td><a th:href="@{/user/delete/{id}(id=${user.id},pn=${page.current})}" class="btn btn-danger" type="button">删除</a></td>
                                     </tr>
                                     </tfoot>
 
@@ -99,12 +101,12 @@
                                     <div class="span6">
                                         <div class="dataTables_paginate paging_bootstrap pagination">
                                             <ul>
-                                                <li class="prev disabled"><a href="#">← Previous</a></li>
-                                                <li th:class="${num == page.current?'active':''}"  th:each="num:${#numbers.sequence(1,page.pages)}">
-                                                    <a th:href="@{/dynamic_table(pn=${num})}">[[${num}]]</a>
+                                                <li class="prev"><a th:href="@{/dynamic_table(pn=${page.current}==1?${page.current}:${page.current-1})}">← Previous</a></li>
+                                                <li th:class="${num+1 == page.current?'active':''}"  th:each="num:${#numbers.sequence(0,page.pages)}">
+                                                    <a th:href="@{/dynamic_table(pn=${num+1})}">[[${num+1}]]</a>
                                                 </li>
 
-                                                <li class="next"><a th:href="@{/dynamic_table(pn=page.current+1)}">Next → </a></li>
+                                                <li class="next"><a th:href="@{/dynamic_table(pn=${page.current}==${page.pages}?${page.current}:${page.current+1})}">Next → </a></li>
                                             </ul>
                                         </div>
                                     </div>
