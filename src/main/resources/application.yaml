@@ -5,6 +5,22 @@ spring:
     password: admin
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-#  jdbc:
-#    template:
-#      max-rows: 1
+    druid:
+      filters: stat,wall
+      filter:
+        stat:
+          merge-sql: true
+          enabled: true
+        wall:
+          enabled: true
+      stat-view-servlet:
+        enabled: true
+        loginUsername: admin
+        login-password: admin
+        reset-enable: true
+      web-stat-filter:
+        enabled: true
+        url-pattern:
+      aop-patterns: com.qfggk.simpleweb.*
+#mybatis:
+#  mapper-locations: classpath:mybatis/mapper/*.xml

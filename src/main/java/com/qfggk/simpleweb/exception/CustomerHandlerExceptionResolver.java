@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Order(value=Ordered.HIGHEST_PRECEDENCE)
-@Component
+//@Component
 public class CustomerHandlerExceptionResolver implements HandlerExceptionResolver {
 
     public CustomerHandlerExceptionResolver() {

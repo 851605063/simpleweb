@@ -1,24 +1,26 @@
 package com.qfggk.simpleweb;
 
-import lombok.extern.slf4j.Slf4j;
+import com.qfggk.simpleweb.bean.User;
+import com.qfggk.simpleweb.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
-import java.util.Map;
-
+@MapperScan("com.qfggk.simpleweb.mapper")
 @SpringBootTest
-@Slf4j
-class SimplewebApplicationTests {
+public class SimplewebApplicationTests {
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private UserMapper userMapper;
+
     @Test
-    void contextLoads() {
-        List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from bms_books");
-        log.info("查询数据: {}",maps.get(1));
+    public void testSelect() {
+        System.out.println(("----- selectAll method test ------"));
+        List<User> userList = userMapper.selectList(null);
+        //Assert.assertEquals(5, userList.size());
+        userList.forEach(System.out::println);
     }
 
 }

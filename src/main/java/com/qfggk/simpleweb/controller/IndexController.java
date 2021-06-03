@@ -41,7 +41,6 @@ public class IndexController {
     @GetMapping("/main.html")
     public String mainPage(HttpSession session,Model model)
     {
-        log.info("当前请求方法是：{}","mainPage");
         String username=(String)session.getAttribute("username");
         if(username!=null)
             return "main";
